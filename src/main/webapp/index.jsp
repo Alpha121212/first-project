@@ -1,47 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Personal Details Form</title>
-</head>
-<body>
-    <h1>Personal Details Form</h1>
-    <form id="personalDetailsForm">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
-        
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
-        
-        <label for="dob">Date of Birth:</label>
-        <input type="date" id="dob" name="dob" required><br><br>
-        
-        <input type="submit" value="Submit">
-    </form>
+/*
+	Dimension by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+*/
 
-    <div id="result"></div>
+/* BG */
 
-    <script>
-        // Get the form element
-        const form = document.getElementById('personalDetailsForm');
+	body.is-preload #bg:before {
+		background-color: transparent;
+	}
 
-        // Listen for the form submission
-        form.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
+/* Header */
 
-            // Get the values from the form
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const dob = document.getElementById('dob').value;
+	body.is-preload #header {
+		-moz-filter: none;
+		-webkit-filter: none;
+		-ms-filter: none;
+		filter: none;
+	}
 
-            // Display the results
-            const result = document.getElementById('result');
-            result.innerHTML = `
-                <h2>Submitted Details:</h2>
-                <p>Name: ${name}</p>
-                <p>Email: ${email}</p>
-                <p>Date of Birth: ${dob}</p>
-            `;
-        });
-    </script>
-</body>
-</html>
+		body.is-preload #header > * {
+			opacity: 1;
+		}
+
+		body.is-preload #header .content .inner {
+			max-height: none;
+			padding: 3rem 2rem;
+			opacity: 1;
+		}
+
+/* Main */
+
+	#main article {
+		opacity: 1;
+		margin: 4rem 0 0 0;
+	}
