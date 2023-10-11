@@ -1,48 +1,47 @@
-// Function to open a new window or tab and fill out a form
-function fillAndSubmitForm() {
-  // Specify the URL of the web page containing the form
-  const targetUrl = 'https://example.com/form-page.html';
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Personal Details Form</title>
+</head>
+<body>
+    <h1>Personal Details Form</h1>
+    <form id="personalDetailsForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required><br><br>
+        
+        <input type="submit" value="Submit">
+    </form>
 
-  // Define values for the form fields
-  const name = 'John Doe';
-  const age = 30;
-  const address = '123 Main St, City';
+    <div id="result"></div>
 
-  // Open a new window or tab
-  const newWindow = window.open(targetUrl, '_blank');
+    <script>
+        // Get the form element
+        const form = document.getElementById('personalDetailsForm');
 
-  // Wait for the new window to load (you may need to adjust the time)
-  setTimeout(() => {
-    if (newWindow) {
-      // Access the document of the new window
-      const newDocument = newWindow.document;
+        // Listen for the form submission
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
 
-      // Locate the form elements and fill them with data
-      const nameField = newDocument.getElementById('name'); // Replace 'name' with the actual ID of the name input field
-      const ageField = newDocument.getElementById('age');   // Replace 'age' with the actual ID of the age input field
-      const addressField = newDocument.getElementById('address'); // Replace 'address' with the actual ID of the address input field
+            // Get the values from the form
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const dob = document.getElementById('dob').value;
 
-      if (nameField && ageField && addressField) {
-        nameField.value = name;
-        ageField.value = age;
-        addressField.value = address;
-
-        // Submit the form (assuming you have a submit button with an ID 'submitBtn')
-        const submitButton = newDocument.getElementById('submitBtn'); // Replace 'submitBtn' with the actual ID of the submit button
-        if (submitButton) {
-          submitButton.click();
-        } else {
-          // If there's no submit button, you can also submit the form directly
-          nameField.form.submit();
-        }
-      } else {
-        alert('Form fields not found on the page.');
-      }
-    } else {
-      alert('New window or tab could not be opened. Please check your browser settings.');
-    }
-  }, 2000); // Adjust the waiting time as needed (in milliseconds)
-}
-
-// Call the function to open the web page and fill the form
-fillAndSubmitForm();
+            // Display the results
+            const result = document.getElementById('result');
+            result.innerHTML = `
+                <h2>Submitted Details:</h2>
+                <p>Name: ${name}</p>
+                <p>Email: ${email}</p>
+                <p>Date of Birth: ${dob}</p>
+            `;
+        });
+    </script>
+</body>
+</html>
